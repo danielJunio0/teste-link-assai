@@ -5,13 +5,19 @@
   <script>
     // Função para redirecionar para o esquema personalizado do aplicativo
     function redirectToApp() {
-      var appScheme = "assaiclientes://app/birthday"; // Substitua pelo esquema do seu aplicativo
+      var appScheme = "assaiclientes://app"; // Substitua pelo esquema do seu aplicativo
       
       window.location.href = appScheme;
 
-      // Redirecione para a loja de aplicativos se o aplicativo não estiver instalado
+      // Redirecione para a loja de aplicativos apropriada se o aplicativo não estiver instalado
       setTimeout(function() {
-        window.location.href = "https://play.google.com/store/apps/details?id=com.assai.app"; // Substitua pelo link da loja de aplicativos
+        var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+        if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+          window.location.href = "https://itunes.apple.com/br/app/assaí-clientes/id979078703?mt=8";
+        } else if (/android/i.test(userAgent)) {
+          window.location.href = "https://play.google.com/store/apps/details?id=com.assai.app";
+        }
       }, 3000); // Redirecione após 3 segundos (ajuste conforme necessário)
     }
   </script>
