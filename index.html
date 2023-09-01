@@ -1,12 +1,22 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-  <meta http-equiv="refresh" content="0;url=assaiclientes://app/">
-</head>
+  <title>Redirecionando...</title>
+  <script>
+    // Função para redirecionar para o esquema personalizado do aplicativo
+    function redirectToApp() {
+      var appScheme = "assaiclientes://app/birthday"; // Substitua pelo esquema do seu aplicativo
+      
+      window.location.href = appScheme;
 
-<body>
+      // Redirecione para a loja de aplicativos se o aplicativo não estiver instalado
+      setTimeout(function() {
+        window.location.href = "https://play.google.com/store/apps/details?id=com.assai.app"; // Substitua pelo link da loja de aplicativos
+      }, 3000); // Redirecione após 3 segundos (ajuste conforme necessário)
+    }
+  </script>
+</head>
+<body onload="redirectToApp()">
   Redirecionando...
 </body>
-
 </html>
